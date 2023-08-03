@@ -41,9 +41,6 @@ namespace E_commerce
         public User PostUser(User user)
         {
             user = userRepository.AddUser(user);
-            //var response = this.Request.CreateResponse<User>(HttpStatusCode.Created, user);
-            //string uri = Url.Link("DefaultApi", new { id = user.Id });
-            //response.Headers.Location = new Uri(uri);
             return user;
         }
 
