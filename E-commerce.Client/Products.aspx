@@ -1,11 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Products.aspx.cs" Inherits="E_commerce.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
 </asp:Content>
 
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script>
+        function DeleteProduct_Click(productId) {
+            $.ajax({
+                type: 'DELETE',
+                url: 'https://localhost:44307/api/products/' + productId,
+                dataType: 'json',
+                crossDomain: true,
+                success: function (data, textStatus, xhr) {
+                    console.log("A MERS!");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+
+        function EditProduct_Click(productId) {
+            window.location.href = "EditProduct.aspx?parameter=" + productId
+        }
+    </script>
 
     <div id="IdRegistrationForm" runat="server">
         <table>
@@ -34,13 +55,13 @@
                     <asp:TextBox ID="Description" runat="server"></asp:TextBox>
                 </td>
             </tr>
-             <tr>
+            <tr>
                 <td>Image</td>
                 <td>
                     <asp:TextBox ID="Image" runat="server"></asp:TextBox>
                 </td>
             </tr>
-           
+
             <tr>
                 <td colspan="2">
                     <asp:Button ID="IdSubmitBtn" OnClick="IdSubmitBtn_Click" runat="server" Text="Submit" />
@@ -75,6 +96,10 @@
             </Columns>
         </asp:GridView>
     </div>
+    <p></p>
+
+    <asp:Label ID="ProductTable" runat="server"></asp:Label>
+
 
 
 </asp:Content>
