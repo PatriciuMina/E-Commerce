@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace E_commerce.Client
 {
-    public partial class EditUser : System.Web.UI.Page
+    public partial class EditAddress : System.Web.UI.Page
     {
-        UsersController usersController = new UsersController();
-
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-        }
 
+        }
     }
 }

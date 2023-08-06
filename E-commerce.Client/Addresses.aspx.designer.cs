@@ -11,16 +11,16 @@ namespace E_commerce.Client
 {
 
 
-    public partial class Users
+    public partial class Addresses
     {
 
         /// <summary>
-        /// UserTable control.
+        /// AddressTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserTable;
+        protected global::System.Web.UI.WebControls.Label AddressTable;
     }
 }

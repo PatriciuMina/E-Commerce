@@ -6,49 +6,61 @@ using System.Web.UI;
 using System.Web.Http;
 using System.Web.UI.WebControls;
 using E_commerce;
+using System.Text;
 
 namespace E_commerce.Client
 {
     public partial class Users : System.Web.UI.Page
     {
-        UsersController usersController = new UsersController();
+        UsersController userController = new UsersController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            IEnumerable<User> users = usersController.GetAllUsers();
-            grvUser.DataSource = users;
-            grvUser.DataBind();
+            GenerateUserTable();
         }
 
-        protected void grvUser_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GenerateUserTable()
         {
+            IEnumerable<User> users = userController.GetAllUsers();
+            StringBuilder usersStringBuilder = new StringBuilder("");
 
-        }
+            usersStringBuilder.Append("<table border='1'>");
+            usersStringBuilder.Append("<tr>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Id</th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Name</th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Email</th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Phone Number</th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Passwordr</th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Role</th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
+            usersStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
+            usersStringBuilder.Append("</tr>");
 
-        protected void IdSubmitBtn_Click(object sender, EventArgs e)
-        {
-            string name = Name.Text;
-            string email = Email.Text;
-            string phonenumber = PhoneNumber.Text;
-            string password = Password.Text;
-            string role = Role.Text;
+            foreach (User user in users)
+            {
+                usersStringBuilder.Append("<tr>");
+                usersStringBuilder.Append("<td>" + user.Id + "</td>");
+                usersStringBuilder.Append("<td>" + user.Name + "</td>");
+                usersStringBuilder.Append("<td>" + user.Email + "</td>");
+                usersStringBuilder.Append("<td>" + user.PhoneNumber + "</td>");
+                usersStringBuilder.Append("<td>" + user.Password + "</td>");
+                usersStringBuilder.Append("<td>" + user.Role + "</td>");
 
-            User user = new User(name, email, phonenumber, password, role);
-            usersController.PostUser(user);
-            Response.Redirect(Request.Url.AbsolutePath);
-        }
+                // Edit Button
+                usersStringBuilder.Append("<td>");
+                usersStringBuilder.Append("<button type='button' class='edit-button' data-id='" + user.Id + "'>Edit</button>");
+                usersStringBuilder.Append("</td>");
 
-        protected void DeleteUser_Click(object sender, EventArgs e)
-        {
-            int id = Int32.Parse(((Button)sender).Attributes["data-argument"]);
-            usersController.DeleteUser(id);
-            Response.Redirect(Request.Url.AbsolutePath);
-        }
+                // Delete Button
+                usersStringBuilder.Append("<td>");
+                usersStringBuilder.Append("<button type='button' class='delete-button' data-id='" + user.Id + "'>Delete</button>");
+                usersStringBuilder.Append("</td>");
 
-        protected void EditUser_Click(object sender, EventArgs e)
-        {
-            int id = Int32.Parse(((Button)sender).Attributes["data-argument"]);
-            Response.Redirect("~/EditUser.aspx?parameter=" + id);
+                usersStringBuilder.Append("</tr>");
+            }
 
+            usersStringBuilder.Append("</table>");
+            UserTable.Text = usersStringBuilder.ToString();
         }
     }
 }

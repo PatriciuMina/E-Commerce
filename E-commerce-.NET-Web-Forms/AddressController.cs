@@ -30,7 +30,7 @@ namespace E_commerce
         }
 
 
-        public HttpResponseMessage PostProduct(Address address)
+        public HttpResponseMessage PostAddress(Address address)
         {
             address = addressRepository.AddAddress(address);
             var response = Request.CreateResponse<Address>(HttpStatusCode.Created, address);
@@ -39,7 +39,7 @@ namespace E_commerce
             return response;
         }
 
-        public void PutProduct(int id, Address address)
+        public void PutAddress(int id, Address address)
         {
             address.Id = id;
             if (!addressRepository.UpdateAddress(address))
@@ -48,7 +48,7 @@ namespace E_commerce
             }
         }
 
-        public void DeleteProduct(int id)
+        public void DeleteAddress(int id)
         {
             addressRepository.DeleteAddress(id);
         }
