@@ -8,98 +8,125 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script>
-        function DeleteProduct_Click(productId) {
-            $.ajax({
-                type: 'DELETE',
-                url: 'https://localhost:44307/api/products/' + productId,
-                dataType: 'json',
-                crossDomain: true,
-                success: function (data, textStatus, xhr) {
-                    console.log("A MERS!");
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('Error in Operation');
-                }
-            });
-        }
+        $(document).ready(function () {
+            var messageDiv = $("#messageDiv");
 
-        function EditProduct_Click(productId) {
-            window.location.href = "EditProduct.aspx?parameter=" + productId
-        }
+            // Delete button action
+            $(document).on("click", ".delete-button", function () {
+                var productId = $(this).data("id");
+                console.log(productId);
+                deleteProduct(productId);
+            });
+
+            // Function to delete a product using AJAX
+            function deleteProduct(productId) {
+                $.ajax({
+                    url: "https://localhost:44307/api/products/" + productId,
+                    type: "DELETE",
+                    success: function () {
+                        messageDiv.text("Product deleted successfully.");
+                        location.reload();
+                    },
+                    error: function () {
+                        messageDiv.text("Error deleting user.");
+                    }
+                });
+            }
+
+            // Edit button redirect
+            $(document).on("click", ".edit-button", function () {
+                var productId = $(this).data("id");
+                console.log(productId);
+                window.location.href = "EditProduct.aspx?parameter=" + productId;
+            });
+
+            // Handle add button click
+            $("#addProductButton").click(function () {
+                var formData = {
+                    User_ID: $("#user_id").val(),
+                    Name: $("#name").val(),
+                    Price: $("#price").val(),
+                    Description: $("#description").val(),
+                    Image: $("#image").val()
+                };
+
+                $.ajax({
+                    url: "https://localhost:44307/api/products",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(formData),
+                    success: function () {
+                        messageDiv.text("Product added successfully.");
+                        clearForm();
+                        location.reload();
+                        // generateUserTable(); 
+                    },
+                    error: function () {
+                        messageDiv.text("Error adding user.");
+                    }
+                });
+            });
+
+            function clearForm() {
+                $("#user_id").val("");
+                $("#name").val("");
+                $("#price").val("");
+                $("#description").val("");
+                $("#image").val("");
+            }
+
+        });
     </script>
+
+     <h1>Products</h1>
+
+     <div id="messageDiv" class=""></div>
+
+    <h2>Add New Product</h2>
 
     <div id="IdRegistrationForm" runat="server">
         <table>
 
             <tr>
-                <td>User ID</td>
+                <td><label for="user_id">User ID:</label></td>
                 <td>
-                    <asp:TextBox ID="UserID" runat="server"></asp:TextBox>
+                    <input type="text" id="user_id" name="user_id" required><br> 
                 </td>
             </tr>
             <tr>
-                <td>Name</td>
+                <td><label for="name">Name:</label></td>
                 <td>
-                    <asp:TextBox ID="Name" runat="server"></asp:TextBox>
+                    <input type="text" id="name" name="name" required><br>
                 </td>
             </tr>
             <tr>
-                <td>Price</td>
+                <td><label for="price">Price:</label></td>
                 <td>
-                    <asp:TextBox ID="Price" runat="server" type="number"></asp:TextBox>
+                    <input type="number" id="price" name="price" required><br> 
                 </td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td><label for="description">Description:</label></td>
                 <td>
-                    <asp:TextBox ID="Description" runat="server"></asp:TextBox>
+                    <input type="text" id="description" name="description" required><br>
                 </td>
             </tr>
             <tr>
-                <td>Image</td>
+                <td><label for="image">Image:</label></td>
                 <td>
-                    <asp:TextBox ID="Image" runat="server"></asp:TextBox>
+                    <input type="text" id="image" name="image" required><br>
                 </td>
             </tr>
 
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="IdSubmitBtn" OnClick="IdSubmitBtn_Click" runat="server" Text="Submit" />
+                    <button type="button" id="addProductButton">Add Product</button>
                 </td>
             </tr>
         </table>
     </div>
     <p></p>
 
-    <div>
-        <asp:GridView ID="grvProduct" DataKeyNames="ID" runat="server" AutoGenerateColumns="false" OnRowCommand="grvProduct_RowCommand">
-            <HeaderStyle BackColor="#00aaaa"></HeaderStyle>
-            <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" />
-                <asp:BoundField DataField="User_ID" HeaderText="User_ID" />
-                <asp:BoundField DataField="Name" HeaderText="Name" />
-                <asp:BoundField DataField="Price" HeaderText="Price" />
-                <asp:BoundField DataField="Description" HeaderText="Description" />
-                <asp:BoundField DataField="Image" HeaderText="Image" />
-
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:Button runat="server" ID="btnEdit" OnClick="EditProduct_Click" data-argument='<%# Eval("Id") %> ' Text="Edit" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:Button runat="server" ID="DeleteBtn" OnClick="DeleteProduct_Click" data-argument='<%# Eval("Id") %> ' Text="Delete" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-    </div>
-    <p></p>
-
     <asp:Label ID="ProductTable" runat="server"></asp:Label>
-
-
 
 </asp:Content>
