@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Orders.aspx.cs" Inherits="E_commerce.Client.Orders" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="Layouts/TableStyle.css" rel="stylesheet" />
 </asp:Content>
 
 
@@ -79,40 +80,21 @@
 
     <h2>Add New Order</h2>
 
-    <div id="IdRegistrationForm" runat="server">
-        <table>
+    <div id="IdRegistrationForm" runat="server" class="field form-group">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required class="form-control"><br> 
 
-            <tr>
-                <td><label for="user_id">User ID:</label></td>
-                <td>
-                    <input type="text" id="user_id" name="user_id" required><br> 
-                </td>
-            </tr>
-            <tr>
-                <td><label for="date">Date:</label></td>
-                <td>
-                    <input type="date" id="date" name="date" required><br>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="total">Total:</label></td>
-                <td>
-                    <input type="number" id="total" name="total" required><br> 
-                </td>
-            </tr>
-            <tr>
-                <td><label for="address_id">Address ID:</label></td>
-                <td>
-                    <input type="text" id="address_id" name="address_id" required><br> 
-                </td>
-            </tr>
-           
-            <tr>
-                <td colspan="2">
-                    <button type="button" id="addOrderButton">Add Order</button>
-                </td>
-            </tr>
-        </table>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required class="form-control"><br>
+
+        <label for="total">Total:</label>
+        <input type="number" id="total" name="total" required class="form-control"><br> 
+
+        <label for="address_id">Address ID:</label>
+        <input type="text" id="address_id" name="address_id" required class="form-control"><br> 
+
+        <button type="button" id="addOrderButton" class="btn btn-secondary rounded-3">Add Order</button>
+        
     </div>
     <p></p>
 

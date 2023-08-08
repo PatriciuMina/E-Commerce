@@ -17,17 +17,18 @@ namespace E_commerce
         {
             IEnumerable<Product> products = productsController.GetAllProducts();
             StringBuilder productsStringBuilder = new StringBuilder("");
-            productsStringBuilder.Append("<table border='1'>");
-            productsStringBuilder.Append("<tr>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'>Id</th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'>User_ID</th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'>Name</th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'>Price</th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'>Description</th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'>Image</th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
-            productsStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
-            productsStringBuilder.Append("</tr>");
+            productsStringBuilder.Append("<div class='table-responsive'>");
+            productsStringBuilder.Append("<table class='table table-striped table-bordered table-hover'>");
+            productsStringBuilder.Append("<thead>");
+            productsStringBuilder.Append("<th>Id</th>");
+            productsStringBuilder.Append("<th>User_ID</th>");
+            productsStringBuilder.Append("<th>Name</th>");
+            productsStringBuilder.Append("<th>Price</th>");
+            productsStringBuilder.Append("<th>Description</th>");
+            productsStringBuilder.Append("<th>Image</th>");
+            productsStringBuilder.Append("<th></th>");
+            productsStringBuilder.Append("<th></th>");
+            productsStringBuilder.Append("</thead>");
             foreach(Product product in products)
             {
                 productsStringBuilder.Append("<tr>");
@@ -67,6 +68,7 @@ namespace E_commerce
                 productsStringBuilder.Append("</tr>");
             }
             productsStringBuilder.Append("</table>");
+            productsStringBuilder.Append("</div>");
             ProductTable.Text = productsStringBuilder.ToString();
         }
 

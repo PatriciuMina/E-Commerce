@@ -5,30 +5,30 @@
 
     <h1>Edit Address</h1>
 
-    <div id="messageDiv" class=""></div>
+    <div id="messageDiv" class="field form-group"></div>
 
     <label for="user_id">User ID:</label>
-    <input type="text" id="user_id" name="user_id" required><br>
+    <input type="text" id="user_id" name="user_id" required class="form-control"><br>
 
     <label for="address_line1">Address Line 1:</label>
-    <input type="text" id="address_line1" name="address_line1" required><br>
+    <input type="text" id="address_line1" name="address_line1" required class="form-control"><br>
 
     <label for="address_line2">Address Line 2:</label>
-    <input type="text" id="address_line2" name="address_line2"><br>
+    <input type="text" id="address_line2" name="address_line2" class="form-control"><br>
 
     <label for="city">City:</label>
-    <input type="text" id="city" name="city" required><br>
+    <input type="text" id="city" name="city" required class="form-control"><br>
 
     <label for="postal_code">Postal Code:</label>
-    <input type="text" id="postal_code" name="postal_code" required><br>
+    <input type="text" id="postal_code" name="postal_code" required class="form-control"><br>
 
     <label for="country">Country:</label>
-    <input type="text" id="country" name="country" required><br>
+    <input type="text" id="country" name="country" required class="form-control"><br>
 
     <label for="region">Region:</label>
-    <input type="text" id="region" name="region"><br>
+    <input type="text" id="region" name="region" class="form-control"><br>
 
-    <button type="button" id="updateAddressButton">Update Address</button>
+    <button type="button" id="updateAddressButton" class="btn btn-secondary rounded-3">Update Address</button>
 
     <script>
         $(document).ready(function () {

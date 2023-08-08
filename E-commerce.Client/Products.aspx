@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <link href="Layouts/TableStyle.css" rel="stylesheet" />
 </asp:Content>
 
 
@@ -84,46 +85,23 @@
 
     <h2>Add New Product</h2>
 
-    <div id="IdRegistrationForm" runat="server">
-        <table>
+    <div id="IdRegistrationForm" runat="server" class="field form-group">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required class="form-control"><br>
 
-            <tr>
-                <td><label for="user_id">User ID:</label></td>
-                <td>
-                    <input type="text" id="user_id" name="user_id" required><br> 
-                </td>
-            </tr>
-            <tr>
-                <td><label for="name">Name:</label></td>
-                <td>
-                    <input type="text" id="name" name="name" required><br>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="price">Price:</label></td>
-                <td>
-                    <input type="number" id="price" name="price" required><br> 
-                </td>
-            </tr>
-            <tr>
-                <td><label for="description">Description:</label></td>
-                <td>
-                    <input type="text" id="description" name="description" required><br>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="image">Image:</label></td>
-                <td>
-                    <input type="text" id="image" name="image" required><br>
-                </td>
-            </tr>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required class="form-control"><br>
 
-            <tr>
-                <td colspan="2">
-                    <button type="button" id="addProductButton">Add Product</button>
-                </td>
-            </tr>
-        </table>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required class="form-control"><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required class="form-control"><br>
+
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image" required class="form-control"><br>
+
+        <button type="button" id="addProductButton" class="btn btn-secondary rounded-3">Add Product</button>
     </div>
     <p></p>
 

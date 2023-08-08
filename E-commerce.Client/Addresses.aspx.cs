@@ -21,19 +21,20 @@ namespace E_commerce.Client
         {
             IEnumerable<Address> addresses = addressController.GetAllAddresses();
             StringBuilder addressesStringBuilder = new StringBuilder("");
-            addressesStringBuilder.Append("<table border='1'>");
-            addressesStringBuilder.Append("<tr>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>Id</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>User_ID</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>Address Line 1</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>Address Line 2</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>City</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>Postal Code</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>Country</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'>Region</th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
-            addressesStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
-            addressesStringBuilder.Append("</tr>");
+            addressesStringBuilder.Append("<div class='table-responsive'>");
+            addressesStringBuilder.Append("<table class='table table-striped table-bordered table-hover'>");
+            addressesStringBuilder.Append("<thead>");
+            addressesStringBuilder.Append("<th>Id</th>");
+            addressesStringBuilder.Append("<th>User_ID</th>");
+            addressesStringBuilder.Append("<th>Address Line 1</th>");
+            addressesStringBuilder.Append("<th>Address Line 2</th>");
+            addressesStringBuilder.Append("<th>City</th>");
+            addressesStringBuilder.Append("<th>Postal Code</th>");
+            addressesStringBuilder.Append("<th>Country</th>");
+            addressesStringBuilder.Append("<th>Region</th>");
+            addressesStringBuilder.Append("<th></th>");
+            addressesStringBuilder.Append("<th></th>");
+            addressesStringBuilder.Append("</thead>");
 
             foreach (Address address in addresses)
             {
@@ -83,6 +84,7 @@ namespace E_commerce.Client
             }
 
             addressesStringBuilder.Append("</table>");
+            addressesStringBuilder.Append("</div>");
             AddressTable.Text = addressesStringBuilder.ToString();
         }
     }

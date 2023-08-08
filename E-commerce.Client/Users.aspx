@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Users.aspx.cs" Inherits="E_commerce.Client.Users" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="Layouts/TableStyle.css" rel="stylesheet" />
 </asp:Content>
 
 
@@ -10,23 +11,23 @@
     <div id="messageDiv" class=""></div>
 
     <h2>Add New User</h2>
-    <div id="addUserForm">
+    <div id="addUserForm" class="field form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
+        <input type="text" id="name" name="name" required class="form-control"><br>
 
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+        <input type="text" id="email" name="email" required class="form-control"><br>
 
         <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number"><br>
+        <input type="text" id="phone_number" name="phone_number" class="form-control"><br>
 
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password"><br>
+        <input type="text" id="password" name="password" class="form-control"><br>
 
         <label for="role">Role:</label>
-        <input type="text" id="role" name="role" required><br>
+        <input type="text" id="role" name="role" required class="form-control"><br>
 
-        <button type="button" id="addUserButton">Add User</button>
+        <button type="button" id="addUserButton" class="btn btn-secondary rounded-3">Add User</button>
     </div>
      <div id="userContainer"></div>
 
