@@ -6,23 +6,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
       <h1>Edit User</h1>
 
-    <div id="messageDiv" class=""></div>
+    <div id="messageDiv" class="field form-group"></div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
+        <input type="text" id="name" name="name" required class="form-control"><br>
 
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+        <input type="text" id="email" name="email" required class="form-control"><br>
 
         <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number"><br>
+        <input type="text" id="phone_number" name="phone_number" class="form-control"><br>
 
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password"><br>
+        <input type="text" id="password" name="password" class="form-control"><br>
 
         <label for="role">Role:</label>
-        <input type="text" id="role" name="role" required><br>
+        <input type="text" id="role" name="role" required class="form-control"><br>
 
-    <button type="button" id="updateUserButton">Update User</button>
+    <button type="button" id="updateUserButton" class="btn btn-secondary rounded-3">Update User</button>
 
     <script>
         $(document).ready(function () {

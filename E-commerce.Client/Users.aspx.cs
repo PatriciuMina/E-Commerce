@@ -23,18 +23,18 @@ namespace E_commerce.Client
         {
             IEnumerable<User> users = userController.GetAllUsers();
             StringBuilder usersStringBuilder = new StringBuilder("");
-
-            usersStringBuilder.Append("<table border='1'>");
-            usersStringBuilder.Append("<tr>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Id</th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Name</th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Email</th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Phone Number</th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Passwordr</th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'>Role</th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
-            usersStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
-            usersStringBuilder.Append("</tr>");
+            usersStringBuilder.Append("<div class='table-responsive'>");
+            usersStringBuilder.Append("<table class='table table-striped table-bordered table-hover'>");
+            usersStringBuilder.Append("<thead>");
+            usersStringBuilder.Append("<th>Id</th>");
+            usersStringBuilder.Append("<th>Name</th>");
+            usersStringBuilder.Append("<th>Email</th>");
+            usersStringBuilder.Append("<th>Phone Number</th>");
+            usersStringBuilder.Append("<th>Passwordr</th>");
+            usersStringBuilder.Append("<th>Role</th>");
+            usersStringBuilder.Append("<th></th>");
+            usersStringBuilder.Append("<th></th>");
+            usersStringBuilder.Append("</thead>");
 
             foreach (User user in users)
             {
@@ -60,6 +60,7 @@ namespace E_commerce.Client
             }
 
             usersStringBuilder.Append("</table>");
+            usersStringBuilder.Append("</div>");
             UserTable.Text = usersStringBuilder.ToString();
         }
     }
