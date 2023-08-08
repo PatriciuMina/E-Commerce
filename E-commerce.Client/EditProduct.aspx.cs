@@ -9,7 +9,6 @@ namespace E_commerce
 {
     public partial class EditProduct : System.Web.UI.Page
     {
-        ProductsController productsController = new ProductsController();
 
         protected void Page_Load(object sender, EventArgs e)
         {

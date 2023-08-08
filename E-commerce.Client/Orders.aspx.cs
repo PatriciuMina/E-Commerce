@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,38 +15,54 @@ namespace E_commerce.Client
         protected void Page_Load(object sender, EventArgs e)
         {
             IEnumerable<Order> orders = ordersController.GetAllOrders();
-            grvOrder.DataSource = orders;
-            grvOrder.DataBind();
+            StringBuilder ordersStringBuilder = new StringBuilder("");
+            ordersStringBuilder.Append("<table border='1'>");
+            ordersStringBuilder.Append("<tr>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'>Id</th>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'>User_ID</th>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'>Date</th>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'>Total</th>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'>Address_Id</th>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
+            ordersStringBuilder.Append("<th style='background-color:#00aaaa'></th>");
+            ordersStringBuilder.Append("</tr>");
+            foreach (Order order in orders)
+            {
+                ordersStringBuilder.Append("<tr>");
+                //Order ID
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append(order.Id);
+                ordersStringBuilder.Append("</td>");
+                //Order User ID
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append(order.User_ID);
+                ordersStringBuilder.Append("</td>");
+                //Order Date
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append(order.Date);
+                ordersStringBuilder.Append("</td>");
+                //Order Total
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append(order.Total);
+                ordersStringBuilder.Append("</td>");
+                //Order Address ID
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append(order.Address_Id);
+                ordersStringBuilder.Append("</td>");
+                //Edit Button
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append("<button type='button' class='edit-button' data-id='" + order.Id + "'> Edit </ button >");
+                ordersStringBuilder.Append("</td>");
+                //Delete Button
+                ordersStringBuilder.Append("<td>");
+                ordersStringBuilder.Append("<button type='button' class='delete-button' data-id='" + order.Id + "'> Delete </ button >");
+                ordersStringBuilder.Append("</td>");
+
+                ordersStringBuilder.Append("</tr>");
+            }
+            ordersStringBuilder.Append("</table>");
+            OrderTable.Text = ordersStringBuilder.ToString();
         }
 
-        protected void grvOrder_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
-        protected void IdSubmitBtn_Click(object sender, EventArgs e)
-        {
-            int user_Id = Int32.Parse(UserID.Text);
-            DateTime date = DateTime.ParseExact(Date.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            decimal total = decimal.Parse(Total.Text);
-            int address_id = Int32.Parse(Address_Id.Text);
-            Order order = new Order(user_Id, date, total, address_id);
-            ordersController.PostOrder(order);
-            Response.Redirect(Request.Url.AbsolutePath);
-        }
-
-        protected void DeleteOrder_Click(object sender, EventArgs e)
-        {
-            int id = Int32.Parse(((Button)sender).Attributes["data-argument"]);
-            ordersController.DeleteOrder(id);
-            Response.Redirect(Request.Url.AbsolutePath);
-        }
-
-        protected void EditOrder_Click(object sender, EventArgs e)
-        {
-            int id = Int32.Parse(((Button)sender).Attributes["data-argument"]);
-            Response.Redirect("~/EditOrder.aspx?parameter=" + id);
-
-        }
     }
 }

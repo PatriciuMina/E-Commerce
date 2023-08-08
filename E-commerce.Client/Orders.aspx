@@ -5,68 +5,118 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script>
+        $(document).ready(function () {
+            var messageDiv = $("#messageDiv");
+
+            // Delete button action
+            $(document).on("click", ".delete-button", function () {
+                var orderId = $(this).data("id");
+                console.log(orderId);
+                deleteOrder(orderId);
+            });
+
+            // Function to delete an order using AJAX
+            function deleteOrder(orderId) {
+                $.ajax({
+                    url: "https://localhost:44307/api/orders/" + orderId,
+                    type: "DELETE",
+                    success: function () {
+                        messageDiv.text("Order deleted successfully.");
+                        location.reload();
+                    },
+                    error: function () {
+                        messageDiv.text("Error deleting user.");
+                    }
+                });
+            }
+
+            // Edit button redirect
+            $(document).on("click", ".edit-button", function () {
+                var ordereId = $(this).data("id");
+                console.log(ordereId);
+                window.location.href = "EditOrder.aspx?parameter=" + ordereId;
+            });
+
+            // Handle add button click
+            $("#addOrderButton").click(function () {
+                var formData = {
+                    User_ID: $("#user_id").val(),
+                    Date: $("#date").val(),
+                    Total: $("#total").val(),
+                    Address_Id: $("#address_id").val(),
+                };
+                
+
+                $.ajax({
+                    url: "https://localhost:44307/api/orders",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(formData),
+                    success: function () {
+                        messageDiv.text("Order added successfully.");
+                        clearForm();
+                        location.reload();
+                    },
+                    error: function () {
+                        messageDiv.text("Error adding user.");
+                    }
+                });
+            });
+
+            function clearForm() {
+                $("#user_id").val("");
+                $("#date").val("");
+                $("#total").val("");
+                $("#address_id").val("");
+            }
+
+        });
+    </script>
+     <h1>Orders</h1>
+
+     <div id="messageDiv" class=""></div>
+
+    <h2>Add New Order</h2>
 
     <div id="IdRegistrationForm" runat="server">
         <table>
 
             <tr>
-                <td>User ID</td>
+                <td><label for="user_id">User ID:</label></td>
                 <td>
-                    <asp:TextBox ID="UserID" runat="server"></asp:TextBox>
+                    <input type="text" id="user_id" name="user_id" required><br> 
                 </td>
             </tr>
             <tr>
-                <td>Date</td>
+                <td><label for="date">Date:</label></td>
                 <td>
-                    <asp:TextBox ID="Date" runat="server" type="date"></asp:TextBox>
+                    <input type="date" id="date" name="date" required><br>
                 </td>
             </tr>
             <tr>
-                <td>Total</td>
+                <td><label for="total">Total:</label></td>
                 <td>
-                    <asp:TextBox ID="Total" runat="server" type="number"></asp:TextBox>
+                    <input type="number" id="total" name="total" required><br> 
                 </td>
             </tr>
             <tr>
-                <td>Address_Id</td>
+                <td><label for="address_id">Address ID:</label></td>
                 <td>
-                    <asp:TextBox ID="Address_Id" runat="server"></asp:TextBox>
+                    <input type="text" id="address_id" name="address_id" required><br> 
                 </td>
             </tr>
            
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="IdSubmitBtn" OnClick="IdSubmitBtn_Click" runat="server" Text="Submit" />
+                    <button type="button" id="addOrderButton">Add Order</button>
                 </td>
             </tr>
         </table>
     </div>
     <p></p>
 
-    <div>
-        <asp:GridView ID="grvOrder" DataKeyNames="ID" runat="server" AutoGenerateColumns="false" OnRowCommand="grvOrder_RowCommand">
-            <HeaderStyle BackColor="#00aaaa"></HeaderStyle>
-            <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" />
-                <asp:BoundField DataField="User_ID" HeaderText="User_ID" />
-                <asp:BoundField DataField="Date" HeaderText="Date" />
-                <asp:BoundField DataField="Total" HeaderText="Total" />
-                <asp:BoundField DataField="Address_Id" HeaderText="Address_Id" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:Button runat="server" ID="btnEdit" OnClick="EditOrder_Click" data-argument='<%# Eval("Id") %> ' Text="Edit" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:Button runat="server" ID="DeleteBtn" OnClick="DeleteOrder_Click" data-argument='<%# Eval("Id") %> ' Text="Delete" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-    </div>
-
+    <asp:Label ID="OrderTable" runat="server"></asp:Label>
 
 </asp:Content>
 
