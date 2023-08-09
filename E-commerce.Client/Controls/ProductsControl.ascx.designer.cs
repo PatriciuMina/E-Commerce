@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_commerce
+namespace E_commerce.Client.Controls
 {
 
 
-    public partial class EditProduct
+    public partial class WebUserControl1
     {
 
         /// <summary>
-        /// ProductsControl control.
+        /// IdRegistrationForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::E_commerce.Client.Controls.WebUserControl1 ProductsControl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdRegistrationForm;
     }
 }

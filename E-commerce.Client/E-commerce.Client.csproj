@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\ProductsControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="EditAddress.aspx" />
     <Content Include="EditOrder.aspx" />
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductsControl.ascx.cs">
+      <DependentUpon>ProductsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ProductsControl.ascx.designer.cs">
+      <DependentUpon>ProductsControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
