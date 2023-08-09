@@ -15,12 +15,12 @@ namespace E_commerce.Client
     {
 
         /// <summary>
-        /// IdRegistrationForm control.
+        /// OrdersControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdRegistrationForm;
+        protected global::E_commerce.Client.Controls.OrdersControl OrdersControl;
     }
 }
