@@ -1,75 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditOrder.aspx.cs" Inherits="E_commerce.Client.EditOrder" %>
 
+<%@ Register Src="~/Controls/OrdersControl.ascx" TagPrefix="uc1" TagName="OrdersControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <script>
-        $(document).ready(function () {
-            var urlParams = new URLSearchParams(window.location.search);
-            var orderId = urlParams.get('parameter');
-            console.log(orderId);
-
-            // Pre-fill data with previous data 
-            $.ajax({
-                url: "https://localhost:44307/api/orders/" + orderId,
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-                    $("#user_id").val(data.User_ID);
-                    $("#date").val(data.Date);
-                    $("#total").val(data.Total);
-                    $("#address_id").val(data.Address_Id);
-                },
-                error: function () {
-                    // Handle error
-                }
-            });
-
-            $("#updateOrderButton").click(function () {
-                var formData = {
-                    User_ID: $("#user_id").val(),
-                    Date: $("#date").val(),
-                    Total: $("#total").val(),
-                    Address_Id: $("#address_id").val(),
-                };
-
-                $.ajax({
-                    url: "https://localhost:44307/api/orders/" + orderId,
-                    type: "PUT",
-                    contentType: "application/json",
-                    data: JSON.stringify(formData),
-                    success: function () {
-                        window.location.href = "Orders.aspx";
-                    },
-                    error: function () {
-                        window.location.href = "Orders.aspx";
-                    }
-                });
-            });
-
-
-        });
-    </script>
-
     <h1>Edit Order</h1>
-     <div id="IdRegistrationForm" runat="server" class="field form-group">
-         <label for="user_id">User ID:</label>
-         <input type="text" id="user_id" name="user_id" required class="form-control"><br>
 
-         <label for="date">Date:</label>
-         <input type="date" id="date" name="date" required class="form-control"><br>
-
-         <label for="total">Total:</label>
-         <input type="number" id="total" name="total" required class="form-control"><br>
-
-         <label for="address_id">Address ID:</label>
-         <input type="text" id="address_id" name="address_id" required class="form-control"><br>
-
-         <button type="button" id="updateOrderButton" class="btn btn-secondary rounded-3">Update Order</button>
-
-     </div>
+    <uc1:OrdersControl runat="server" ID="OrdersControl" />
+    
 </asp:Content>
 

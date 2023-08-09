@@ -10,8 +10,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Edit Product</h1>
 
-    <h1>Product Control</h1>
-
     <uc1:ProductsControl runat="server" ID="ProductsControl" />
 
 </asp:Content>

@@ -6,7 +6,6 @@
 
         var urlParams = new URLSearchParams(window.location.search);
         var productId = urlParams.get('parameter');
-        console.log(productId);
         if (productId != null) {
             var productButton = document.getElementById("addProduct");
             productButton.textContent = "Edit Product"
@@ -62,7 +61,6 @@
                     Description: $("#description").val(),
                     Image: $("#image").val()
                 };
-                console.log(formData);
 
                 $.ajax({
                     url: "https://localhost:44307/api/products",
@@ -72,8 +70,7 @@
                     success: function () {
                         console.log("Product added successfully.");
                         clearForm();
-                        location.reload();
-                        // generateUserTable(); 
+                        location.reload(); 
                     },
                     error: function () {
                         console.log("Error adding user.");
