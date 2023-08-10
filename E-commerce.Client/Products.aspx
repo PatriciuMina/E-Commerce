@@ -19,8 +19,9 @@
 
     <h2>Add New Product</h2>
 
-    <uc:ProductsForm ID="ProductsControl" runat="server" />
+    <uc1:ProductsControl ID="ProductsControl" runat="server" />
 
     <uc:TablesControl runat="server" ID="TablesControl" />
 
+    <uc:TablesControl runat="server" ID="TablesControl1" />
 </asp:Content>

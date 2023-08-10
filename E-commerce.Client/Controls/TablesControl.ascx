@@ -29,7 +29,7 @@
             var Id = $(this).data("id");
             deleteItem(Id);
         });
-
+        
         // Function to delete a product using AJAX
         function deleteItem(Id) {
             $.ajax({
@@ -44,13 +44,15 @@
                 }
             });
         }
-
+          
         // Edit button redirect
         $(document).on("click", ".edit-button", function () {
             var Id = $(this).data("id");
             window.location.href = editLinkString + Id;
         });
 
+        } else {   
+        }
     });
 
 

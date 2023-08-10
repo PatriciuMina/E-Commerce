@@ -264,5 +264,6 @@ namespace E_commerce.Client.Controls
             addressesStringBuilder.Append("</div>");
             return addressesStringBuilder;
         }
+
     }
 }
