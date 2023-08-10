@@ -7,29 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_commerce.Client
+namespace E_commerce.Client.Controls
 {
 
 
-    public partial class Users
+    public partial class TablesControl
     {
 
         /// <summary>
-        /// UsersControl control.
+        /// Table control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::E_commerce.Client.Controls.UsersControl UsersControl;
-
-        /// <summary>
-        /// TablesControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::E_commerce.Client.Controls.TablesControl TablesControl;
+        protected global::System.Web.UI.WebControls.Label Table;
     }
 }

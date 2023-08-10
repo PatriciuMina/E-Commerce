@@ -24,12 +24,12 @@ namespace E_commerce.Client
         protected global::E_commerce.Client.Controls.OrdersControl OrdersControl;
 
         /// <summary>
-        /// OrderTable control.
+        /// TablesControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label OrderTable;
+        protected global::E_commerce.Client.Controls.TablesControl TablesControl;
     }
 }

@@ -127,6 +127,7 @@
     <Content Include="Controls\AddressesControl.ascx" />
     <Content Include="Controls\OrdersControl.ascx" />
     <Content Include="Controls\ProductsControl.ascx" />
+    <Content Include="Controls\TablesControl.ascx" />
     <Content Include="Controls\UsersControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="EditAddress.aspx" />
@@ -228,6 +229,13 @@
     </Compile>
     <Compile Include="Controls\ProductsControl.ascx.designer.cs">
       <DependentUpon>ProductsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TablesControl.ascx.cs">
+      <DependentUpon>TablesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TablesControl.ascx.designer.cs">
+      <DependentUpon>TablesControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\UsersControl.ascx.cs">
       <DependentUpon>UsersControl.ascx</DependentUpon>
