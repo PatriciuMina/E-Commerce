@@ -20,7 +20,4 @@
 
     <uc1:TablesControl runat="server" ID="TablesControl" />
 
-    <h1>Table Control Table</h1>
-    <uc1:TablesControl runat="server" ID="TablesControl" />
-
 </asp:Content>
