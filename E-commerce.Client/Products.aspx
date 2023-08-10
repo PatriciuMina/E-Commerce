@@ -2,7 +2,8 @@
 
 <%@ Register Src="~/Controls/ProductsControl.ascx" TagPrefix="uc1" TagName="ProductsControl" %>
 
-<%@ Register Src="~/Controls/ProductsControl.ascx" TagPrefix="uc" TagName="ProductsForm" %>
+<%@ Register Src="~/Controls/TablesControl.ascx" TagPrefix="uc" TagName="TablesControl" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script src="Scripts/jquery-3.4.1.min.js"></script>
@@ -47,8 +48,9 @@
 
     <h2>Add New Product</h2>
 
-    <uc:ProductsForm ID="ProductsControl" runat="server" />
+    <uc1:ProductsControl ID="ProductsControl" runat="server" />
 
     <asp:Label ID="ProductTable" runat="server"></asp:Label>
 
+    <uc:TablesControl runat="server" ID="TablesControl1" />
 </asp:Content>
