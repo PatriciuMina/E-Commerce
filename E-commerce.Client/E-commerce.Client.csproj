@@ -48,7 +48,6 @@
       <HintPath>..\E-commerce-.NET-Web-Forms\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="PresentationCore" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -115,7 +114,6 @@
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>..\E-commerce-.NET-Web-Forms\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -126,9 +124,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\AddressesControl.ascx" />
     <Content Include="Controls\OrdersControl.ascx" />
     <Content Include="Controls\ProductsControl.ascx" />
-    <Content Include="Controls\TablesControl.ascx" />
+    <Content Include="Controls\UsersControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="EditAddress.aspx" />
     <Content Include="EditOrder.aspx" />
@@ -209,6 +208,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AddressesControl.ascx.cs">
+      <DependentUpon>AddressesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AddressesControl.ascx.designer.cs">
+      <DependentUpon>AddressesControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OrdersControl.ascx.cs">
       <DependentUpon>OrdersControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -223,12 +229,12 @@
     <Compile Include="Controls\ProductsControl.ascx.designer.cs">
       <DependentUpon>ProductsControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TablesControl.ascx.cs">
-      <DependentUpon>TablesControl.ascx</DependentUpon>
+    <Compile Include="Controls\UsersControl.ascx.cs">
+      <DependentUpon>UsersControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\TablesControl.ascx.designer.cs">
-      <DependentUpon>TablesControl.ascx</DependentUpon>
+    <Compile Include="Controls\UsersControl.ascx.designer.cs">
+      <DependentUpon>UsersControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
