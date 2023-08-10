@@ -124,8 +124,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\AddressesControl.ascx" />
     <Content Include="Controls\OrdersControl.ascx" />
     <Content Include="Controls\ProductsControl.ascx" />
+    <Content Include="Controls\UsersControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="EditAddress.aspx" />
     <Content Include="EditOrder.aspx" />
@@ -206,6 +208,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AddressesControl.ascx.cs">
+      <DependentUpon>AddressesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AddressesControl.ascx.designer.cs">
+      <DependentUpon>AddressesControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OrdersControl.ascx.cs">
       <DependentUpon>OrdersControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +228,13 @@
     </Compile>
     <Compile Include="Controls\ProductsControl.ascx.designer.cs">
       <DependentUpon>ProductsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UsersControl.ascx.cs">
+      <DependentUpon>UsersControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UsersControl.ascx.designer.cs">
+      <DependentUpon>UsersControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

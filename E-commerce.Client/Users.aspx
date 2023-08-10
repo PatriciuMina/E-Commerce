@@ -1,4 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Users.aspx.cs" Inherits="E_commerce.Client.Users" %>
+
+<%@ Register Src="~/Controls/UsersControl.ascx" TagPrefix="uc" TagName="UsersControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="Layouts/TableStyle.css" rel="stylesheet" />
@@ -6,33 +10,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>Users</h1>
-
-    <div id="messageDiv" class=""></div>
-
-    <h2>Add New User</h2>
-    <div id="addUserForm" class="field form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required class="form-control"><br>
-
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required class="form-control"><br>
-
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" class="form-control"><br>
-
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" class="form-control"><br>
-
-        <label for="role">Role:</label>
-        <input type="text" id="role" name="role" required class="form-control"><br>
-
-        <button type="button" id="addUserButton" class="btn btn-secondary rounded-3">Add User</button>
-    </div>
-     <div id="userContainer"></div>
-
-        <asp:Label ID="UserTable" runat="server"></asp:Label>
-
+    
 <script>
     $(document).ready(function () {
         var messageDiv = $("#messageDiv");
@@ -40,6 +18,7 @@
         // Delete button action
         $(document).on("click", ".delete-button", function () {
             var userId = $(this).data("id");
+            console.log(userId);
             deleteUser(userId);
         });
 
@@ -61,45 +40,20 @@
         // Edit button redirect
         $(document).on("click", ".edit-button", function () {
             var userId = $(this).data("id");
+            console.log(userId);
             window.location.href = "EditUser.aspx?userId=" + userId;
         });
-
-        // Handle add button click
-        $("#addUserButton").click(function () {
-            var formData = {
-                Name: $("#name").val(),
-                Email: $("#email").val(),
-                PhoneNumber: $("#phone_number").val(),
-                Password: $("#password").val(),
-                Role: $("#role").val()
-            };
-
-            $.ajax({
-                url: "https://localhost:44307/api/users",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify(formData),
-                success: function () {
-                    messageDiv.text("User added successfully.");
-                    clearForm();
-                    location.reload();
-                    // generateUserTable(); 
-                },
-                error: function () {
-                    messageDiv.text("Error adding user.");
-                }
-            });
-        });
-
-        function clearForm() {
-            $("#name").val("");
-            $("#email").val("");
-            $("#phone_number").val("");
-            $("#password").val("");
-            $("#role").val("");
-        }
-
     });
 </script>
+
+    <h1>Users</h1>
+
+    <div id="messageDiv" class=""></div>
+
+    <h2>Add New User</h2>
+
+    <uc:UsersControl ID="UsersControl" runat="server" />
+
+    <asp:Label ID="UserTable" runat="server"></asp:Label>
 
 </asp:Content>
