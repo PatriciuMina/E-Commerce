@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Products.aspx.cs" Inherits="E_commerce.WebForm1" %>
 
-<%@ Register Src="~/Controls/ProductsControl.ascx" TagPrefix="uc1" TagName="ProductsControl" %>
+<%@ Register Src="~/Controls/ProductsControl.ascx" TagPrefix="uc" TagName="ProductsControl" %>
 
-<%@ Register Src="~/Controls/ProductsControl.ascx" TagPrefix="uc" TagName="ProductsForm" %>
 <%@ Register Src="~/Controls/TablesControl.ascx" TagPrefix="uc" TagName="TablesControl" %>
 
 
@@ -19,9 +18,9 @@
 
     <h2>Add New Product</h2>
 
-    <uc1:ProductsControl ID="ProductsControl" runat="server" />
+    <uc:ProductsControl ID="ProductsControl" runat="server" />
 
     <uc:TablesControl runat="server" ID="TablesControl" />
 
-    <uc:TablesControl runat="server" ID="TablesControl1" />
+    
 </asp:Content>

@@ -49,9 +49,6 @@
             var Id = $(this).data("id");
             window.location.href = editLinkString + Id;
         });
-
-        } else {   
-        }
     });
 
 
