@@ -11,14 +11,9 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent"></asp:ContentPlaceHolder>
-
-
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <webopt:bundlereference runat="server" path="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    
+
 </head>
 <body>
     <form runat="server">
@@ -54,12 +49,29 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Users">Users</a></li>
-                        <li><a runat="server" href="~/Products">Products</a></li>
-                        <li><a runat="server" href="~/Orders">Orders</a></li>
-                        <li><a runat="server" href="~/Addresses">Addresses</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a href="../Addresses/Addresses.aspx">Addresses</a></li>
+                        <li><a href="../Orders/Orders.aspx">Orders</a></li>                   
+                        <li><a href="../Products/Products.aspx">Products</a></li>
+                        <li><a href="../Users/Users.aspx">Users</a></li> 
                     </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
                 </div>
             </div>
         </div>
@@ -67,40 +79,10 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-           
             <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h4>About Us</h4>
-                            <p>Discover E-Commerce, where quality meets style. 
-                                We're your go-to destination for curated products that elevate everyday living. 
-                                Explore our wide selection and experience shopping redefined.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Customer Service</h4>
-                            <ul>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Returns & Exchanges</a></li>
-                                <li><a href="#">FAQs</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Follow Us</h4>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="text-center">&copy; <%: DateTime.Now.Year %> Your E-commerce. All rights reserved.</p>
-                </div>
-                
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>
-
     </form>
 </body>
 </html>

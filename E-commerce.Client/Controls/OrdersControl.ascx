@@ -10,7 +10,7 @@
             orderButton.textContent = "Edit Order";
             // Pre-fill data with previous data 
             $.ajax({
-                url: "https://localhost:44307/api/orders/" + orderId,
+                url: "https://localhost:44343/api/orders/" + orderId,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -33,7 +33,7 @@
                 };
 
                 $.ajax({
-                    url: "https://localhost:44307/api/orders/" + orderId,
+                    url: "https://localhost:44343/api/orders/" + orderId,
                     type: "PUT",
                     contentType: "application/json",
                     data: JSON.stringify(formData),
@@ -59,7 +59,7 @@
 
 
                 $.ajax({
-                    url: "https://localhost:44307/api/orders",
+                    url: "https://localhost:44343/api/orders",
                     type: "POST",
                     contentType: "application/json",
                     data: JSON.stringify(formData),

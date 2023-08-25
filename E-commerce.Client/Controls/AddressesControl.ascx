@@ -14,7 +14,7 @@
             addressButton.textContent = "Edit Address"
             // pre fill data with previous data 
             $.ajax({
-                url: "https://localhost:44307/api/address/" + addressId,
+                url: "https://localhost:44343/api/address/" + addressId,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -45,7 +45,7 @@
                 };
 
                 $.ajax({
-                    url: "https://localhost:44307/api/address/" + addressId,
+                    url: "https://localhost:44343/api/address/" + addressId,
                     type: "PUT",
                     contentType: "application/json",
                     data: JSON.stringify(formData),
@@ -74,7 +74,7 @@
                 };
 
                 $.ajax({
-                    url: "https://localhost:44307/api/address",
+                    url: "https://localhost:44343/api/address",
                     type: "POST",
                     contentType: "application/json",
                     data: JSON.stringify(formData),

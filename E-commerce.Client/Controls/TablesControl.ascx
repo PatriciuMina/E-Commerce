@@ -5,21 +5,21 @@
 
         var tablesParameter = window.location.pathname;
         switch (tablesParameter) {
-            case "/Products":
-                editLinkString = "EditProduct.aspx?parameter=";
-                deleteUrlString = "https://localhost:44307/api/products/";
+            case "/Products/Products":
+                editLinkString = "/Products/EditProduct.aspx?parameter=";
+                deleteUrlString = "https://localhost:44343/api/products/";
                 break;
-            case "/Orders":
-                editLinkString = "EditOrder.aspx?parameter=";
-                deleteUrlString = "https://localhost:44307/api/orders/";
+            case "/Orders/Orders":
+                editLinkString = "/Orders/EditOrder.aspx?parameter=";
+                deleteUrlString = "https://localhost:44343/api/orders/";
                 break;
-            case "/Users":
-                editLinkString = "EditUser.aspx?userId=";
-                deleteUrlString = "https://localhost:44307/api/users/";
+            case "/Users/Users":
+                editLinkString = "/Users/EditUser.aspx?userId=";
+                deleteUrlString = "https://localhost:44343/api/users/";
                 break;
-            case "/Addresses":
-                editLinkString = "EditAddress.aspx?addressId=";
-                deleteUrlString = "https://localhost:44307/api/address/";
+            case "/Addresses/Addresses":
+                editLinkString = "/Addresses/EditAddress.aspx?addressId=";
+                deleteUrlString = "https://localhost:44343/api/address/";
                 break;
         }
 
@@ -49,6 +49,8 @@
             var Id = $(this).data("id");
             window.location.href = editLinkString + Id;
         });
+
+        
     });
 
 

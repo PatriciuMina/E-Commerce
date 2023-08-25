@@ -14,7 +14,7 @@
            
             // Pre-fill data with previous data 
             $.ajax({
-                url: "https://localhost:44307/api/users/" + userId,
+                url: "https://localhost:44343/api/users/" + userId,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -39,7 +39,7 @@
                 };
 
                 $.ajax({
-                    url: "https://localhost:44307/api/users/" + userId,
+                    url: "https://localhost:44343/api/users/" + userId,
                     type: "PUT",
                     contentType: "application/json",
                     data: JSON.stringify(formData),
@@ -67,7 +67,7 @@
                 console.log(formData);
 
                 $.ajax({
-                    url: "https://localhost:44307/api/users",
+                    url: "https://localhost:44343/api/users",
                     type: "POST",
                     contentType: "application/json",
                     data: JSON.stringify(formData),

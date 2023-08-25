@@ -11,7 +11,7 @@
             productButton.textContent = "Edit Product"
             // Pre-fill data with previous data 
             $.ajax({
-                url: "https://localhost:44307/api/products/" + productId,
+                url: "https://localhost:44343/api/products/" + productId,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -36,7 +36,7 @@
                 };
 
                 $.ajax({
-                    url: "https://localhost:44307/api/products/" + productId,
+                    url: "https://localhost:44343/api/products/" + productId,
                     type: "PUT",
                     contentType: "application/json",
                     data: JSON.stringify(formData),
@@ -63,7 +63,7 @@
                 };
 
                 $.ajax({
-                    url: "https://localhost:44307/api/products",
+                    url: "https://localhost:44343/api/products",
                     type: "POST",
                     contentType: "application/json",
                     data: JSON.stringify(formData),
