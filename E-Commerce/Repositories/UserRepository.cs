@@ -46,14 +46,17 @@ namespace E_commerce
             return result;
         }
 
-        public IdentityResult CreateUser(IdentityUser user, string Pass)
+        public IdentityResult CreateUser(IdentityUser user, string Pass, string Role)
         {
             var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
             var user2 = new ApplicationUser() { UserName = user.UserName, Email = user.Email, PhoneNumber = user.PhoneNumber };
             IdentityResult result = manager.Create(user2, Pass);
+            var id = manager.FindByEmail(user.Email).Id;
+            manager.AddToRole(id,Role);
             return result;
         }
+
         public SignInStatus SignInUser(string Email, string Password, bool rememberMe)
         {
             // Validate the user password

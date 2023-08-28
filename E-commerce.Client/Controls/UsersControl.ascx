@@ -11,7 +11,7 @@
         if (userId != null) {
             var userButton = document.getElementById("userButton");
             userButton.textContent = "Edit User"
-           
+
             // Pre-fill data with previous data 
             $.ajax({
                 url: "https://localhost:44343/api/users/" + userId,
@@ -22,7 +22,7 @@
                     $("#email").val(data.Email);
                     $("#phone_number").val(data.PhoneNumber);
                     $("#password").val(data.Password);
-                    //$("#role").val(data.Role);
+                    $("#role").val(data.Role);
                 },
                 error: function () {
                     // Handle error
@@ -35,7 +35,7 @@
                     Email: $("#email").val(),
                     PhoneNumber: $("#phone_number").val(),
                     Password: $("#password").val(),
-                   // Role: $("#role").val()
+                    // Role: $("#role").val()
                 };
 
                 $.ajax({
@@ -62,10 +62,9 @@
                     Email: $("#email").val(),
                     PhoneNumber: $("#phone_number").val(),
                     Pass: $("#password").val(),
-                    //Role: $("#role").val()
+                    Role: $("#role").val()
                 };
                 console.log(formData);
-
                 $.ajax({
                     url: "https://localhost:44343/api/users",
                     type: "POST",
@@ -74,7 +73,7 @@
                     success: function () {
                         location.reload();
                         messageDiv.text("User added successfully.");
-                        clearForm(); 
+                        clearForm();
                         // generateUserTable(); 
                     },
                     error: function () {
@@ -89,7 +88,7 @@
                 $("#email").val("");
                 $("#phone_number").val("");
                 $("#password").val("");
-               // $("#role").val("");
+                $("#role").val("");
             }
         }
     });
@@ -99,20 +98,26 @@
 
 
 <div id="IdRegistrationForm" runat="server" class="field form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required class="form-control"><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required class="form-control"><br>
 
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email" required class="form-control"><br>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required class="form-control"><br>
 
-      <label for="phone_number">Phone Number:</label>
-      <input type="text" id="phone_number" name="phone_number" required class="form-control"><br>
+    <label for="phone_number">Phone Number:</label>
+    <input type="text" id="phone_number" name="phone_number" required class="form-control"><br>
 
-      <label for="password">Password:</label>
-      <input type="text" id="password" name="password" required class="form-control"><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required class="form-control"><br>
 
-      <label for="role">Role:</label>
-      <input type="text" id="role" name="role" required class="form-control"><br>
+    <label for="role">Role:</label>
+    <select type="text" id="role" name="role" required class="form-control">
+        <option>Select Role</option>
+        <option value="admin">Admin</option>
+        <option value="seller">Seller</option>
+        <option value="buyer">Buyer</option>
+    </select>
+    <br>
 
     <button type="button" id="userButton" class="btn btn-secondary rounded-3">Add User</button>
 </div>

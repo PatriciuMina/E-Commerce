@@ -55,7 +55,8 @@ namespace E_commerce
         {
             IdentityUser user = new ApplicationUser() { UserName = jsonData["UserName"].ToString(), Email = jsonData["Email"].ToString(), PhoneNumber = jsonData["PhoneNumber"].ToString() };
             string pass = jsonData["Pass"].ToString();
-            var result = userRepository.CreateUser(user, pass);
+            string role = jsonData["Role"].ToString();
+            var result = userRepository.CreateUser(user, pass, role);
             return result;
         }
 
