@@ -1,13 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UsersControl.ascx.cs" Inherits="E_commerce.Client.Controls.UsersControl" %>
-<script src="Scripts/jquery-3.4.1.min.js"></script>
-<link href="Layouts/TableStyle.css" rel="stylesheet" />
+
+
+<link href="../Layouts/TableStyle.css" rel="stylesheet" />
 
 <script type="text/javascript">
     $(document).ready(function () {
 
         var urlParams = new URLSearchParams(window.location.search);
         var userId = urlParams.get('userId');
-        console.log(userId);
         if (userId != null) {
             var userButton = document.getElementById("userButton");
             userButton.textContent = "Edit User"
@@ -58,10 +58,10 @@
             // Handle add button click
             $("#userButton").click(function () {
                 var formData = {
-                    Name: $("#name").val(),
+                    UserName: $("#name").val(),
                     Email: $("#email").val(),
                     PhoneNumber: $("#phone_number").val(),
-                    Password: $("#password").val(),
+                    Pass: $("#password").val(),
                     //Role: $("#role").val()
                 };
                 console.log(formData);

@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using E_Commerce.Models;
 using E_Commerce;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json.Linq;
 
 namespace E_commerce
 {
@@ -50,9 +51,11 @@ namespace E_commerce
             return result;
         }
 
-        public IdentityResult CreateUser(IdentityUser user, string Pass)
+        public IdentityResult CreateUser([FromBody] JObject jsonData)
         {
-            var result = userRepository.CreateUser(user, Pass);
+            IdentityUser user = new ApplicationUser() { UserName = jsonData["UserName"].ToString(), Email = jsonData["Email"].ToString(), PhoneNumber = jsonData["PhoneNumber"].ToString() };
+            string pass = jsonData["Pass"].ToString();
+            var result = userRepository.CreateUser(user, pass);
             return result;
         }
 
