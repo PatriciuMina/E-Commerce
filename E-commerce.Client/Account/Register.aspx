@@ -11,11 +11,27 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">UserName</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="UserName" CssClass="form-control"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
+                    CssClass="text-danger" ErrorMessage="The UserName field is required." />
+            </div>
+        </div>
+        <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                     CssClass="text-danger" ErrorMessage="The email field is required." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="PhoneNumber" CssClass="col-md-2 control-label">PhoneNumber</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="PhoneNumber"
+                    CssClass="text-danger" ErrorMessage="The PhoneNumber field is required." />
             </div>
         </div>
         <div class="form-group">

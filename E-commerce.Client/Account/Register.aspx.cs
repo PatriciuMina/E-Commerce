@@ -14,7 +14,7 @@ namespace E_commerce.Client.Account
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             UsersController usersController = new UsersController();
-            var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
+            var user = new ApplicationUser() { UserName = UserName.Text, Email = Email.Text, PhoneNumber = PhoneNumber.Text };
             IdentityResult result =  usersController.RegisterUser(user, Password.Text);
             //var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();

@@ -50,6 +50,12 @@ namespace E_commerce
             return result;
         }
 
+        public IdentityResult CreateUser(IdentityUser user, string Pass)
+        {
+            var result = userRepository.CreateUser(user, Pass);
+            return result;
+        }
+
         public SignInStatus SignInUser(string Email, string Password, bool rememberMe)
         {
             var result = userRepository.SignInUser(Email, Password, rememberMe);

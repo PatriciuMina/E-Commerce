@@ -18,11 +18,11 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#name").val(data.Name);
+                    $("#name").val(data.UserName);
                     $("#email").val(data.Email);
                     $("#phone_number").val(data.PhoneNumber);
                     $("#password").val(data.Password);
-                    $("#role").val(data.Role);
+                    //$("#role").val(data.Role);
                 },
                 error: function () {
                     // Handle error
@@ -35,7 +35,7 @@
                     Email: $("#email").val(),
                     PhoneNumber: $("#phone_number").val(),
                     Password: $("#password").val(),
-                    Role: $("#role").val()
+                   // Role: $("#role").val()
                 };
 
                 $.ajax({
@@ -62,7 +62,7 @@
                     Email: $("#email").val(),
                     PhoneNumber: $("#phone_number").val(),
                     Password: $("#password").val(),
-                    Role: $("#role").val()
+                    //Role: $("#role").val()
                 };
                 console.log(formData);
 
@@ -89,7 +89,7 @@
                 $("#email").val("");
                 $("#phone_number").val("");
                 $("#password").val("");
-                $("#role").val("");
+               // $("#role").val("");
             }
         }
     });
