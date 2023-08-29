@@ -102,6 +102,14 @@ namespace E_commerce
             }
         }
 
+        public string GetUserByEmail(string email)
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindByEmail(email);
+            string role = manager.GetRoles(user.Id)[0].ToString();
+            return role;
+        }
+
 
     }
 }

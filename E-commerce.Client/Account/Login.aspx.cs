@@ -29,6 +29,7 @@ namespace E_commerce.Client.Account
             {
                 UsersController usersController = new UsersController();
                 var result = usersController.SignInUser(Email.Text.ToString(), Password.Text.ToString(), RememberMe.Checked);
+                string role = usersController.GetUserByEmail(Email.Text.ToString());
                 /*
                 // Validate the user password
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -42,6 +43,17 @@ namespace E_commerce.Client.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
+                        if(role == "Admin")
+                        {
+                            Response.Redirect("../Users/Users.aspx");
+                        }else if(role == "Buyer")
+                        {
+                            Response.Redirect("~/About");
+                        }
+                        else if(role == "Seller")
+                        {
+                            Response.Redirect("../Products/Products.aspx");
+                        }
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         break;
                     case SignInStatus.LockedOut:

@@ -82,5 +82,10 @@ namespace E_commerce
         {
             userRepository.DeleteUser(id);
         }
+
+        public string GetUserByEmail(string email)
+        {
+            return userRepository.GetUserByEmail(email);
+        }
     }
 }
