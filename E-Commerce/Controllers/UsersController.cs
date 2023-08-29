@@ -66,10 +66,13 @@ namespace E_commerce
             return result;
         }
 
-        public void PutUser(string id, IdentityUser user)
+        public void PutUser(string id, [FromBody] JObject jsonData)
         {
+            IdentityUser user = new ApplicationUser() { UserName = jsonData["UserName"].ToString(), Email = jsonData["Email"].ToString(), PhoneNumber = jsonData["PhoneNumber"].ToString() };
+            string pass = jsonData["Pass"].ToString();
+            string role = jsonData["Role"].ToString();
             user.Id = id;
-            if (!userRepository.UpdateUser(user))
+            if (!userRepository.UpdateUser(id,user,pass,role))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }

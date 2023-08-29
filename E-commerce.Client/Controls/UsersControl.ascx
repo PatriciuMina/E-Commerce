@@ -31,11 +31,11 @@
 
             $("#userButton").click(function () {
                 var formData = {
-                    Name: $("#name").val(),
+                    UserName: $("#name").val(),
                     Email: $("#email").val(),
                     PhoneNumber: $("#phone_number").val(),
-                    Password: $("#password").val(),
-                    // Role: $("#role").val()
+                    Pass: $("#password").val(),
+                    Role: $("#role").val()
                 };
 
                 $.ajax({

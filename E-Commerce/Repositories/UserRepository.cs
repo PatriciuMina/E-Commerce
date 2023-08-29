@@ -78,12 +78,30 @@ namespace E_commerce
 
         }
 
-        public bool UpdateUser(IdentityUser user)
+        public bool UpdateUser(string id, IdentityUser updatedUser, string pass, string role)
         {
-           
-            return true;
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var signInManager = System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
+
+            var existingUser = manager.FindById(id);
+            if (existingUser != null)
+            {
+                
+                existingUser.UserName = updatedUser.UserName;
+                existingUser.Email = updatedUser.Email;
+                existingUser.PhoneNumber = updatedUser.PhoneNumber;
+                
+                
+
+                var result = manager.Update(existingUser);
+                return result.Succeeded;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        
+
     }
 }
