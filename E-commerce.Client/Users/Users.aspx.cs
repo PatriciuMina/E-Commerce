@@ -14,7 +14,10 @@ namespace E_commerce.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!User.IsInRole("Admin"))
+            {
+                Response.Redirect("~/About");
+            }
         }
 
     }

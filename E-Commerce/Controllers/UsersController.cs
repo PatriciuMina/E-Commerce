@@ -35,22 +35,13 @@ namespace E_commerce
             return user;
         }
 
-
-        //public HttpResponseMessage PostUser(User user)
-        //{
-        //    user = userRepository.AddUser(user);
-        //    var response = Request.CreateResponse<User>(HttpStatusCode.Created, user);
-        //    string uri = Url.Link("DefaultApi", new { id = user.Id });
-        //    response.Headers.Location = new Uri(uri);
-        //    return response;
-        //}
-
         public IdentityResult RegisterUser(IdentityUser user, string Pass)
         {
             var result = userRepository.RegisterUser(user, Pass);
             return result;
         }
 
+        
         public IdentityResult CreateUser([FromBody] JObject jsonData)
         {
             IdentityUser user = new ApplicationUser() { UserName = jsonData["UserName"].ToString(), Email = jsonData["Email"].ToString(), PhoneNumber = jsonData["PhoneNumber"].ToString() };

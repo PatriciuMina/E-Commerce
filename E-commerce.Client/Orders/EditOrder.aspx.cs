@@ -13,8 +13,10 @@ namespace E_commerce.Client
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
+            if (User.IsInRole("Buyer"))
+            {
+                Response.Redirect("../WarningPages/Warning.aspx");
+            }
         }
 
     }

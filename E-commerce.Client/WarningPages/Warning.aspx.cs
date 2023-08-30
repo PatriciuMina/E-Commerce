@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace E_commerce.Client
+namespace E_commerce.Client.WarningPAges
 {
-    public partial class EditUser : System.Web.UI.Page
+    public partial class Warning : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!User.IsInRole("Admin"))
-            {
-                Response.Redirect("~/About");
-            }
-        }
 
+        }
     }
 }

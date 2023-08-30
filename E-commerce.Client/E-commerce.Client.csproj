@@ -245,6 +245,7 @@
     <Content Include="Users\EditUser.aspx" />
     <Content Include="Users\Users.aspx" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="WarningPages\Warning.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -497,6 +498,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WarningPages\Warning.aspx.cs">
+      <DependentUpon>Warning.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WarningPages\Warning.aspx.designer.cs">
+      <DependentUpon>Warning.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

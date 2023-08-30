@@ -11,6 +11,7 @@ namespace E_commerce.Client.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
         }
     }
