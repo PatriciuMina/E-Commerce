@@ -208,11 +208,13 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\product-icon.png" />
     <Content Include="Layouts\TableStyle.css" />
     <Content Include="Orders\EditOrder.aspx" />
     <Content Include="Orders\Orders.aspx" />
     <Content Include="Products\EditProduct.aspx" />
     <Content Include="Products\Products.aspx" />
+    <Content Include="Products\Products_Client_Page.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -461,6 +463,13 @@
     </Compile>
     <Compile Include="Products\Products.aspx.designer.cs">
       <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Products\Products_Client_Page.aspx.cs">
+      <DependentUpon>Products_Client_Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Products\Products_Client_Page.aspx.designer.cs">
+      <DependentUpon>Products_Client_Page.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

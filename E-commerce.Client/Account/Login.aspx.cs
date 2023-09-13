@@ -48,7 +48,7 @@ namespace E_commerce.Client.Account
                             Response.Redirect("../Users/Users.aspx");
                         }else if(role == "Buyer")
                         {
-                            Response.Redirect("~/About");
+                            Response.Redirect("../Products/Products_Client_Page.aspx");
                         }
                         else if(role == "Seller")
                         {
