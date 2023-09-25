@@ -96,6 +96,9 @@
     <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\E-Commerce\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\E-Commerce\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -208,7 +211,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\card-list.svg" />
+    <Content Include="Images\grid.svg" />
     <Content Include="Images\product-icon.png" />
+    <Content Include="Layouts\Cards.css" />
     <Content Include="Layouts\TableStyle.css" />
     <Content Include="Orders\EditOrder.aspx" />
     <Content Include="Orders\Orders.aspx" />

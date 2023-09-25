@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -69,6 +70,23 @@ namespace E_commerce.Client
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            StringBuilder navBarString = new StringBuilder("");
+            if (HttpContext.Current.User.IsInRole("Admin")){
+                navBarString.Append("<li><a href='../Addresses/Addresses.aspx'>Addresses</a></li>");
+                navBarString.Append("<li><a href='../Orders/Orders.aspx'>Orders</a></li>");
+                navBarString.Append("<li><a href='../Products/Products.aspx'>Products</a></li>");
+                navBarString.Append("<li><a href='../Users/Users.aspx'>Users</a></li>");
+            }
+            else if (HttpContext.Current.User.IsInRole("Seller")) {
+                navBarString.Append("<li><a href='../Addresses/Addresses.aspx'>Addresses</a></li>");
+                navBarString.Append("<li><a href='../Orders/Orders.aspx'>Orders</a></li>");
+                navBarString.Append("<li><a href='../Products/Products.aspx'>Products</a></li>");
+                navBarString.Append("<li><a href='../Products/Products_Client_Page.aspx'>All Products</a></li>");
+            }
+            else if (HttpContext.Current.User.IsInRole("Buyer")){
+                navBarString.Append("<li><a href='../Products/Products_Client_Page.aspx'>All Products</a></li>");
+            }
+            NavBarItems.Text = navBarString.ToString();
 
         }
 

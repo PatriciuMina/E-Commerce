@@ -15,6 +15,24 @@ namespace E_commerce.Client.Products
     {
 
         /// <summary>
+        /// list_products control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton list_products;
+
+        /// <summary>
+        /// cards_products control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton cards_products;
+
+        /// <summary>
         /// Cards control.
         /// </summary>
         /// <remarks>

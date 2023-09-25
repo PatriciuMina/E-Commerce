@@ -51,10 +51,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                        <li><a href="../Addresses/Addresses.aspx">Addresses</a></li>
-                        <li><a href="../Orders/Orders.aspx">Orders</a></li>                   
-                        <li><a href="../Products/Products.aspx">Products</a></li>
-                        <li><a href="../Users/Users.aspx">Users</a></li> 
+                        <li><asp:Label ID="NavBarItems" runat="server"></asp:Label></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
