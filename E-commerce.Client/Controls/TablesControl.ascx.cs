@@ -49,6 +49,7 @@ namespace E_commerce.Client.Controls
             {
                 return new StringBuilder("<p>No items to display.</p>");
             }
+            string itemType = items.GetType().GetGenericArguments()[0].Name.ToString();
 
             StringBuilder tableBuilder = new StringBuilder();
             tableBuilder.Append("<div class='table-responsive'>");
@@ -78,6 +79,12 @@ namespace E_commerce.Client.Controls
                 {
                     tableBuilder.Append("<td>");
                     tableBuilder.Append(propertyInfo.GetValue(item));
+                    tableBuilder.Append("</td>");
+                }
+                if (itemType.Equals("Product"))
+                {
+                    tableBuilder.Append("<td>");
+                    tableBuilder.Append("<button type='button' class='btn btn-primary rounded-3' data-id='" + item.GetType().GetProperty("Id").GetValue(item) + "'> View </ button >");
                     tableBuilder.Append("</td>");
                 }
                 tableBuilder.Append("<td>");

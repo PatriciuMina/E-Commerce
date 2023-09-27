@@ -34,6 +34,7 @@ namespace E_commerce.Client.Products
                 productsStringBuilder.Append("<h2>" + p.Name + "</h2>");
                 productsStringBuilder.Append("<p>" + p.Description + "</p>");
                 productsStringBuilder.Append("<p>" + p.Price.ToString() + "$</p>");
+                productsStringBuilder.Append("<p><a class='btn btn-primary rounded-3' href='../Products/ViewProduct.aspx?parameter=" + p.Id + "'>View</a></p>");
                 productsStringBuilder.Append("<p><a class='btn btn-default' href='https://go.microsoft.com/fwlink/?LinkId=301948'>BUY</a></p>");
                 productsStringBuilder.Append("</li>");
                 productsStringBuilder.Append("</br>");
@@ -58,6 +59,7 @@ namespace E_commerce.Client.Products
                     productsStringBuilder.Append("<h2>" + products.ElementAt(j).Name + "</h2>");
                     productsStringBuilder.Append("<p>" + products.ElementAt(j).Description + "</p>");
                     productsStringBuilder.Append("<p>" + products.ElementAt(j).Price.ToString() + "$</p>");
+                    productsStringBuilder.Append("<p><a class='btn btn-primary rounded-3' href='../Products/ViewProduct.aspx?parameter=" + products.ElementAt(j).Id + "'>View</a></p>");
                     productsStringBuilder.Append("<p><a class='btn btn-default' href='https://go.microsoft.com/fwlink/?LinkId=301948'>BUY</a></p>");
                     productsStringBuilder.Append("</div>");
                     productsStringBuilder.Append("</div>");
