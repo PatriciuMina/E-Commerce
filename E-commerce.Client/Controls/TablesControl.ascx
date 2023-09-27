@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TablesControl.ascx.cs" Inherits="E_commerce.Client.Controls.TablesControl" %>
-
+<link href="../Layouts/TableStyle.css" rel="stylesheet" />
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -50,9 +50,14 @@
             window.location.href = editLinkString + Id;
         });
 
+        // View Product Button Redirect
+        $(document).on("click", ".btn-primary", function () {
+            var Id = $(this).data("id"); 
+            window.location.href = "../Products/ViewProduct.aspx?parameter=" + Id;
+        });
+
         
     });
-
 
 </script>
 

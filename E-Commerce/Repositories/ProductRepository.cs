@@ -65,7 +65,7 @@ namespace E_commerce
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Image) VALUES (@User_ID, @Name, @Price, @Description, @Image); SELECT SCOPE_IDENTITY();";
+                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Image, Category, Specifications) VALUES (@User_ID, @Name, @Price, @Description, @Image, @Category, @Specifications); SELECT SCOPE_IDENTITY();";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@User_ID", product.User_ID);
@@ -73,6 +73,8 @@ namespace E_commerce
                     command.Parameters.AddWithValue("@Price", product.Price);
                     command.Parameters.AddWithValue("@Description", product.Description);
                     command.Parameters.AddWithValue("@Image", product.Image);
+                    command.Parameters.AddWithValue("@Category", product.Category);
+                    command.Parameters.AddWithValue("@Specifications", product.Specifications);
 
                     connection.Open();
                     int newProductId = Convert.ToInt32(command.ExecuteScalar());
@@ -100,7 +102,7 @@ namespace E_commerce
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Products SET User_ID = @User_ID, Name = @Name, Price = @Price, Description = @Description, Image = @Image WHERE Id = @Id";
+                string query = "UPDATE Products SET User_ID = @User_ID, Name = @Name, Price = @Price, Description = @Description, Image = @Image, Category = @Category, Specifications = @Specifications WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", product.Id);
@@ -109,6 +111,8 @@ namespace E_commerce
                     command.Parameters.AddWithValue("@Price", product.Price);
                     command.Parameters.AddWithValue("@Description", product.Description);
                     command.Parameters.AddWithValue("@Image", product.Image);
+                    command.Parameters.AddWithValue("@Category", product.Category);
+                    command.Parameters.AddWithValue("@Specifications", product.Specifications);
 
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
@@ -121,12 +125,14 @@ namespace E_commerce
         {
             return new Product
             {
-                Id = (int)reader["Id"],
-                User_ID = (int)reader["User_ID"],
-                Name = (string)reader["Name"],
-                Price = (decimal)reader["Price"],
-                Description = (string)reader["Description"],
-                Image = (string)reader["Image"]
+                Id = Convert.ToInt32(reader["Id"]),
+                User_ID = Convert.ToInt32(reader["User_ID"]),
+                Name = reader["Name"].ToString(),
+                Price = Convert.ToDecimal(reader["Price"]),
+                Description = reader["Description"].ToString(),
+                Image = reader["Image"].ToString(),
+                Category = reader["Category"].ToString(),
+                Specifications = reader["Specifications"].ToString()
             };
         }
     }
