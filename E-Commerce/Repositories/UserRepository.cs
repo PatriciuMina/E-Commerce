@@ -11,6 +11,7 @@ using E_Commerce;
 using E_Commerce.Models;
 using Microsoft.AspNet.Identity;
 using Owin;
+using Microsoft.Owin;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace E_commerce
@@ -22,21 +23,21 @@ namespace E_commerce
         public IEnumerable<IdentityUser> GetUsers()
         {
             List<ApplicationUser> users = new List<ApplicationUser>();
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             users = manager.Users.ToList();
             return users;
         }
 
         public IdentityUser GetUser(string id)
         {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             return manager.FindById(id);
         }
 
         public IdentityResult RegisterUser(IdentityUser user, string Pass)
         {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var signInManager = HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
             var user2 = new ApplicationUser() { UserName = user.UserName, Email = user.Email, PhoneNumber = user.PhoneNumber };
             IdentityResult result = manager.Create(user2, Pass);
             if (result.Succeeded)
@@ -49,8 +50,8 @@ namespace E_commerce
 
         public IdentityResult CreateUser(IdentityUser user, string Pass, string Role)
         {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            //var signInManager = HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
             var user2 = new ApplicationUser() { UserName = user.UserName, Email = user.Email, PhoneNumber = user.PhoneNumber };
             IdentityResult result = manager.Create(user2, Pass);
             string id = manager.FindByEmail(user.Email).Id;
@@ -61,19 +62,20 @@ namespace E_commerce
         public SignInStatus SignInUser(string Email, string Password, bool rememberMe)
         {
             // Validate the user password
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signinManager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationSignInManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var signinManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationSignInManager>();
 
             // This doen't count login failures towards account lockout
             // To enable password failures to trigger lockout, change to shouldLockout: true
-            var result = signinManager.PasswordSignIn(Email, Password, rememberMe, shouldLockout: false);
+            var user2 = manager.FindByEmail(Email).UserName;
+            var result = signinManager.PasswordSignIn(user2, Password, rememberMe, shouldLockout: false);
             return result;
 
         }
 
         public void DeleteUser(string id)
         {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = manager.FindById(id);
             manager.Delete(user);
 
@@ -81,8 +83,8 @@ namespace E_commerce
 
         public bool UpdateUser(string id, IdentityUser updatedUser, string pass, string role)
         {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var signInManager = HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
 
             var existingUser = manager.FindById(id);
             if (existingUser != null)
@@ -103,7 +105,7 @@ namespace E_commerce
 
         public string GetUserByEmail(string email)
         {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = manager.FindByEmail(email);
             string role = manager.GetRoles(user.Id)[0].ToString();
             return role;

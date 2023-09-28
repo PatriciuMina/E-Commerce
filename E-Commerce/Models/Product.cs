@@ -15,8 +15,10 @@ namespace E_Commerce.Models
         public string Image { get; set; }
         public string Category { get; set; }
         public string Specifications { get; set; }
+        public DateTime Created_At { get; set; }
+        public DateTime Updated_At { get; set; }
 
-        public Product(int User_ID, string Name, decimal Price, string Description, string Image, string Category, string Specifications)
+        public Product(int User_ID, string Name, decimal Price, string Description, string Image, string Category, string Specifications, DateTime Created_At, DateTime Updated_At)
         {
             this.User_ID = User_ID;
             this.Name = Name;
@@ -25,6 +27,8 @@ namespace E_Commerce.Models
             this.Image = Image;
             this.Category = Category;
             this.Specifications = Specifications;
+            this.Created_At = Created_At;
+            this.Updated_At = Updated_At;
         }
 
         public Product() { }
