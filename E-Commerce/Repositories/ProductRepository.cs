@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using E_Commerce.Models;
+using System.Globalization;
 
 namespace E_commerce
 {
@@ -63,9 +64,11 @@ namespace E_commerce
 
         public Product AddProduct(Product product)
         {
+            DateTime time = DateTime.Now;
+            product.Created_At = time;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Image, Category, Specifications) VALUES (@User_ID, @Name, @Price, @Description, @Image, @Category, @Specifications); SELECT SCOPE_IDENTITY();";
+                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Image, Category, Specifications, Created_At) VALUES (@User_ID, @Name, @Price, @Description, @Image, @Category, @Specifications, @Created_At); SELECT SCOPE_IDENTITY();";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@User_ID", product.User_ID);
@@ -75,6 +78,8 @@ namespace E_commerce
                     command.Parameters.AddWithValue("@Image", product.Image);
                     command.Parameters.AddWithValue("@Category", product.Category);
                     command.Parameters.AddWithValue("@Specifications", product.Specifications);
+                    command.Parameters.AddWithValue("@Created_At", product.Created_At);
+
 
                     connection.Open();
                     int newProductId = Convert.ToInt32(command.ExecuteScalar());
@@ -100,9 +105,11 @@ namespace E_commerce
 
         public bool UpdateProduct(Product product)
         {
+            DateTime time = DateTime.Now;
+            product.Updated_At = time;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Products SET User_ID = @User_ID, Name = @Name, Price = @Price, Description = @Description, Image = @Image, Category = @Category, Specifications = @Specifications WHERE Id = @Id";
+                string query = "UPDATE Products SET User_ID = @User_ID, Name = @Name, Price = @Price, Description = @Description, Image = @Image, Category = @Category, Specifications = @Specifications, Updated_At = @Updated_At WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", product.Id);
@@ -113,6 +120,7 @@ namespace E_commerce
                     command.Parameters.AddWithValue("@Image", product.Image);
                     command.Parameters.AddWithValue("@Category", product.Category);
                     command.Parameters.AddWithValue("@Specifications", product.Specifications);
+                    command.Parameters.AddWithValue("@Updated_At", product.Updated_At);
 
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
@@ -123,6 +131,10 @@ namespace E_commerce
 
         private Product MapProductFromReader(SqlDataReader reader)
         {
+            DateTime Created_At;
+            DateTime Updated_At;
+            DateTime.TryParseExact(reader["Created_At"].ToString(), "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out Created_At);
+            DateTime.TryParseExact(reader["Updated_At"].ToString(), "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out Updated_At);
             return new Product
             {
                 Id = Convert.ToInt32(reader["Id"]),
@@ -132,7 +144,9 @@ namespace E_commerce
                 Description = reader["Description"].ToString(),
                 Image = reader["Image"].ToString(),
                 Category = reader["Category"].ToString(),
-                Specifications = reader["Specifications"].ToString()
+                Specifications = reader["Specifications"].ToString(),
+                Created_At = Created_At,
+                Updated_At = Updated_At
             };
         }
     }
