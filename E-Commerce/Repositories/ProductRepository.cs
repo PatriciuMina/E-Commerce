@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using E_Commerce.Models;
 using System.Globalization;
+using System.IO;
 
 namespace E_commerce
 {
@@ -66,16 +67,19 @@ namespace E_commerce
         {
             DateTime time = DateTime.Now;
             product.Created_At = time;
+
+            string fileName = Path.GetFileName(product.Image);
+
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Image, Category, Specifications, Created_At) VALUES (@User_ID, @Name, @Price, @Description, @Image, @Category, @Specifications, @Created_At); SELECT SCOPE_IDENTITY();";
+                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Category, Specifications, Image, Created_At) VALUES (@User_ID, @Name, @Price, @Description, @Category, @Specifications, @Image, @Created_At); SELECT SCOPE_IDENTITY();";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@User_ID", product.User_ID);
                     command.Parameters.AddWithValue("@Name", product.Name);
                     command.Parameters.AddWithValue("@Price", product.Price);
                     command.Parameters.AddWithValue("@Description", product.Description);
-                    command.Parameters.AddWithValue("@Image", product.Image);
+                    command.Parameters.AddWithValue("@Image", fileName);
                     command.Parameters.AddWithValue("@Category", product.Category);
                     command.Parameters.AddWithValue("@Specifications", product.Specifications);
                     command.Parameters.AddWithValue("@Created_At", product.Created_At);

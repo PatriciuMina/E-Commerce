@@ -30,6 +30,11 @@ namespace E_commerce.Client.Products
             productsStringBuilder.Append("</br>");
             foreach (Product p in products)
             {
+                string imageName = p.Image;
+                string imageDirectory = "~/ProductsImages/";
+                string imagePath = ResolveUrl(imageDirectory + imageName);
+                productsStringBuilder.Append("<img src='" + imagePath + "' alt='" + p.Name + "' class='img-fluid' width='200' height='200'>");
+
                 productsStringBuilder.Append("<li class='list-group-item'>");
                 productsStringBuilder.Append("<h2>" + p.Name + "</h2>");
                 productsStringBuilder.Append("<p>" + p.Description + "</p>");
@@ -54,8 +59,13 @@ namespace E_commerce.Client.Products
                 productsStringBuilder.Append("<div class='row'>");
                 for (int j = i; j < i + groupSize && j < products.Count<Product>(); j++)
                 {
+                    
                     productsStringBuilder.Append("<div class='col-md-4'>");
                     productsStringBuilder.Append("<div class='card'>");
+                    string imageName = products.ElementAt(j).Image;
+                    string imageDirectory = "~/ProductsImages/";
+                    string imagePath = ResolveUrl(imageDirectory + imageName);
+                    productsStringBuilder.Append("<img src='" + imagePath + "' alt='" + products.ElementAt(j).Name + "' class='img-fluid' width='200' height='200'>");
                     productsStringBuilder.Append("<h2>" + products.ElementAt(j).Name + "</h2>");
                     productsStringBuilder.Append("<p>" + products.ElementAt(j).Description + "</p>");
                     productsStringBuilder.Append("<p>" + products.ElementAt(j).Price.ToString() + "$</p>");

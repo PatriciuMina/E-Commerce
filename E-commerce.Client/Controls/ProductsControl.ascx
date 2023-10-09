@@ -258,6 +258,7 @@
             // Handle add button click
             $("#addProduct").click(function () {
                 var customObject = buildCustomFieldsObject(selectedOptionValue);
+
                 var formData = {
                     User_ID: $("#user_id").val(),
                     Name: $("#name").val(),
@@ -312,7 +313,9 @@
     <input type="text" id="description" name="description" required class="form-control"><br>
 
     <label for="image1">Image:</label>
-    <input type="text" id="image" name="image" required class="form-control"><br>
+    <input type="file" id="image" name="image" accept="image/*" class="form-control"><br>
+
+
 
     <label for="category">Category:</label>
     <select typeof="text" id="category" name="category" required class="form-control">

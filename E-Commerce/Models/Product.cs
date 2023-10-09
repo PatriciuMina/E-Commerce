@@ -17,6 +17,7 @@ namespace E_Commerce.Models
         public string Specifications { get; set; }
         public DateTime Created_At { get; set; }
         public DateTime Updated_At { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
 
         public Product(int User_ID, string Name, decimal Price, string Description, string Image, string Category, string Specifications, DateTime Created_At, DateTime Updated_At)
         {

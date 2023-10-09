@@ -77,10 +77,23 @@ namespace E_commerce.Client.Controls
                 tableBuilder.Append("<tr>");
                 foreach (var propertyInfo in item.GetType().GetProperties())
                 {
-                    tableBuilder.Append("<td>");
-                    tableBuilder.Append(propertyInfo.GetValue(item));
-                    tableBuilder.Append("</td>");
+                    if (propertyInfo.Name == "Image")
+                    {
+                        tableBuilder.Append("<td>");
+                        string imageName = (string)propertyInfo.GetValue(item);
+                        string imageDirectory = "~/ProductsImages/";
+                        string imagePath = ResolveUrl(imageDirectory + imageName);
+                        tableBuilder.Append("<img src='" + imagePath + "' alt='" + "' class='img-fluid' width='100' height='60'>");
+                        tableBuilder.Append("</td>");
+                    }
+                    else
+                    {
+                        tableBuilder.Append("<td>");
+                        tableBuilder.Append(propertyInfo.GetValue(item));
+                        tableBuilder.Append("</td>");
+                    }
                 }
+                
                 if (itemType.Equals("Product"))
                 {
                     tableBuilder.Append("<td>");

@@ -26,6 +26,12 @@ namespace E_commerce.Client.Products
                 viewProductString.Append("<div class='row'>");
                 viewProductString.Append("<div class='col-lg-4'>");
                 viewProductString.Append("<div class='card mb-3 border-dark rounded-3'>");
+
+                string imageName = product.Image; 
+                string imageDirectory = "~/ProductsImages/"; 
+                string imagePath = ResolveUrl(imageDirectory + imageName);
+                viewProductString.Append("<img src='" + imagePath + "' alt='" + product.Name + "' class='img-fluid' width='200' height='200'>");
+
                 viewProductString.Append("<h2>" + product.Name + "</h2>");
                 viewProductString.Append("<p>Description:</p>");
                 viewProductString.Append("<p>" + product.Description + "</p>");
