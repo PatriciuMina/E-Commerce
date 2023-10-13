@@ -218,7 +218,6 @@
     <Content Include="Layouts\TableStyle.css" />
     <Content Include="Orders\EditOrder.aspx" />
     <Content Include="Orders\Orders.aspx" />
-    <Content Include="ProductsImages\Card.jpg" />
     <Content Include="ProductsImages\laptop.jpg" />
     <Content Include="ProductsImages\monitor.jpg" />
     <Content Include="Products\EditProduct.aspx" />
