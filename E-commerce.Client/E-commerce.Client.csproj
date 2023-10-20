@@ -50,6 +50,12 @@
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\E-Commerce\packages\Microsoft.AspNet.Identity.Owin.2.2.4\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\E-Commerce\packages\Microsoft.AspNet.SignalR.Core.2.4.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\E-Commerce\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\E-Commerce\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -186,6 +192,9 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Addresses\Addresses.aspx" />
     <Content Include="Addresses\EditAddress.aspx" />
+    <Content Include="Chat\ChatView.aspx" />
+    <Content Include="Chat\PrivateChat.aspx" />
+    <Content Include="Chat\StartChat.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -214,6 +223,7 @@
     <Content Include="Images\card-list.svg" />
     <Content Include="Images\grid.svg" />
     <Content Include="Images\product-icon.png" />
+    <Content Include="Images\profile_picture.jpg" />
     <Content Include="Layouts\Cards.css" />
     <Content Include="Layouts\TableStyle.css" />
     <Content Include="Orders\EditOrder.aspx" />
@@ -230,6 +240,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.3.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -392,6 +404,27 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Chat\ChatView.aspx.cs">
+      <DependentUpon>ChatView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\ChatView.aspx.designer.cs">
+      <DependentUpon>ChatView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\PrivateChat.aspx.cs">
+      <DependentUpon>PrivateChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\PrivateChat.aspx.designer.cs">
+      <DependentUpon>PrivateChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\StartChat.aspx.cs">
+      <DependentUpon>StartChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\StartChat.aspx.designer.cs">
+      <DependentUpon>StartChat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

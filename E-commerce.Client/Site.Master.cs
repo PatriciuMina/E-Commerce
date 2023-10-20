@@ -72,18 +72,21 @@ namespace E_commerce.Client
         {
             StringBuilder navBarString = new StringBuilder("");
             if (HttpContext.Current.User.IsInRole("Admin")){
+                navBarString.Append("<li><a runat='server' href='../Chat/ChatView'>Chat</a></li>");
                 navBarString.Append("<li><a href='../Addresses/Addresses.aspx'>Addresses</a></li>");
                 navBarString.Append("<li><a href='../Orders/Orders.aspx'>Orders</a></li>");
                 navBarString.Append("<li><a href='../Products/Products.aspx'>Products</a></li>");
                 navBarString.Append("<li><a href='../Users/Users.aspx'>Users</a></li>");
             }
             else if (HttpContext.Current.User.IsInRole("Seller")) {
+                navBarString.Append("<li><a runat='server' href='../Chat/ChatView'>Chat</a></li>");
                 navBarString.Append("<li><a href='../Addresses/Addresses.aspx'>Addresses</a></li>");
                 navBarString.Append("<li><a href='../Orders/Orders.aspx'>Orders</a></li>");
                 navBarString.Append("<li><a href='../Products/Products.aspx'>Products</a></li>");
                 navBarString.Append("<li><a href='../Products/Products_Client_Page.aspx'>All Products</a></li>");
             }
             else if (HttpContext.Current.User.IsInRole("Buyer")){
+                navBarString.Append("<li><a runat='server' href='../Chat/ChatView'>Chat</a></li>");
                 navBarString.Append("<li><a href='../Products/Products_Client_Page.aspx'>All Products</a></li>");
             }
             NavBarItems.Text = navBarString.ToString();
