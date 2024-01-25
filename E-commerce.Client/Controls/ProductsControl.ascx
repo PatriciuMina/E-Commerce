@@ -218,6 +218,7 @@
                     $("#price").val(data.Price);
                     $("#description").val(data.Description);
                     $("#image").val(data.Image);
+                    $("#videopath").val(data.VideoPath);
                     $("#category").val(data.Category);
                     fillCustomFields(data.Specifications);                                  
                 },
@@ -234,6 +235,7 @@
                     Price: $("#price").val(),
                     Description: $("#description").val(),
                     Image: $("#image").val(),
+                    VideoPath: $("#videopath").val(),
                     Category: $("#category").val(),
                     Specifications: JSON.stringify(updateCustomObject)
                 };                
@@ -265,6 +267,7 @@
                     Price: $("#price").val(),
                     Description: $("#description").val(),
                     Image: $("#image").val(),
+                    VideoPath: $("#videopath").val(),
                     Category: $("#category").val(),
                     Specifications: JSON.stringify(customObject)
                 };
@@ -291,6 +294,7 @@
                 $("#price").val("");
                 $("#description").val("");
                 $("#image").val("");
+                $("#videopath").val("");
                 $("#category").val("");
             }
         }
@@ -315,7 +319,8 @@
     <label for="image1">Image:</label>
     <input type="file" id="image" name="image" accept="image/*" class="form-control"><br>
 
-
+    <label for="videopath">Video URL:</label>
+    <input type="file" id="videopath" name="video" class="form-control"><br>
 
     <label for="category">Category:</label>
     <select typeof="text" id="category" name="category" required class="form-control">

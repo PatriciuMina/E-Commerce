@@ -69,10 +69,11 @@ namespace E_commerce
             product.Created_At = time;
 
             string fileName = Path.GetFileName(product.Image);
+            string videoName = Path.GetFileName(product.VideoPath);
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Category, Specifications, Image, Created_At) VALUES (@User_ID, @Name, @Price, @Description, @Category, @Specifications, @Image, @Created_At); SELECT SCOPE_IDENTITY();";
+                string query = "INSERT INTO Products (User_ID, Name, Price, Description, Category, Specifications, Image, VideoPath, Created_At) VALUES (@User_ID, @Name, @Price, @Description, @Category, @Specifications, @Image, @VideoPath, @Created_At); SELECT SCOPE_IDENTITY();";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@User_ID", product.User_ID);
@@ -80,6 +81,7 @@ namespace E_commerce
                     command.Parameters.AddWithValue("@Price", product.Price);
                     command.Parameters.AddWithValue("@Description", product.Description);
                     command.Parameters.AddWithValue("@Image", fileName);
+                    command.Parameters.AddWithValue("@VideoPath", videoName);
                     command.Parameters.AddWithValue("@Category", product.Category);
                     command.Parameters.AddWithValue("@Specifications", product.Specifications);
                     command.Parameters.AddWithValue("@Created_At", product.Created_At);
@@ -113,7 +115,7 @@ namespace E_commerce
             product.Updated_At = time;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Products SET User_ID = @User_ID, Name = @Name, Price = @Price, Description = @Description, Image = @Image, Category = @Category, Specifications = @Specifications, Updated_At = @Updated_At WHERE Id = @Id";
+                string query = "UPDATE Products SET User_ID = @User_ID, Name = @Name, Price = @Price, Description = @Description, Image = @Image, VideoPath = @VideoPath, Category = @Category, Specifications = @Specifications, Updated_At = @Updated_At WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", product.Id);
@@ -122,6 +124,7 @@ namespace E_commerce
                     command.Parameters.AddWithValue("@Price", product.Price);
                     command.Parameters.AddWithValue("@Description", product.Description);
                     command.Parameters.AddWithValue("@Image", product.Image);
+                    command.Parameters.AddWithValue("@VideoPath", product.VideoPath);
                     command.Parameters.AddWithValue("@Category", product.Category);
                     command.Parameters.AddWithValue("@Specifications", product.Specifications);
                     command.Parameters.AddWithValue("@Updated_At", product.Updated_At);
@@ -147,6 +150,7 @@ namespace E_commerce
                 Price = Convert.ToDecimal(reader["Price"]),
                 Description = reader["Description"].ToString(),
                 Image = reader["Image"].ToString(),
+                VideoPath = reader["VideoPath"].ToString(),
                 Category = reader["Category"].ToString(),
                 Specifications = reader["Specifications"].ToString(),
                 Created_At = Created_At,

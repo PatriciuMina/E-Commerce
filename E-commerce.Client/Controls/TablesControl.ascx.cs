@@ -86,6 +86,20 @@ namespace E_commerce.Client.Controls
                         tableBuilder.Append("<img src='" + imagePath + "' alt='" + "' class='img-fluid' width='100' height='60'>");
                         tableBuilder.Append("</td>");
                     }
+                    else if (propertyInfo.Name == "VideoPath")
+                    {
+                        if (!string.IsNullOrEmpty((string)propertyInfo.GetValue(item)))
+                        {
+                            tableBuilder.Append("<td>");
+                            string videoName = (string)propertyInfo.GetValue(item);
+                            string videoDirectory = "~/ProductsVideos/";
+                            string videoPath = ResolveUrl(videoDirectory + videoName);
+                            tableBuilder.Append("<video width='100' height='60' controls>");
+                            tableBuilder.Append("<source src='" + videoPath + "' type='video/mp4'>");
+                            tableBuilder.Append("Your browser does not support the video tag.");
+                            tableBuilder.Append("</video>");
+                        }
+                    }
                     else
                     {
                         tableBuilder.Append("<td>");

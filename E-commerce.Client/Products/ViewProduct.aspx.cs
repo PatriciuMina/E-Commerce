@@ -31,6 +31,16 @@ namespace E_commerce.Client.Products
                 string imageDirectory = "~/ProductsImages/"; 
                 string imagePath = ResolveUrl(imageDirectory + imageName);
                 viewProductString.Append("<img src='" + imagePath + "' alt='" + product.Name + "' class='img-fluid' width='200' height='200'>");
+                if (!string.IsNullOrEmpty(product.VideoPath))
+                {
+                    string videoName = product.VideoPath;
+                    string videoDirectory = "~/ProductsVideos/";
+                    string videoPath = ResolveUrl(videoDirectory + videoName);
+                    viewProductString.Append("<video width='200' height='200' controls>");
+                    viewProductString.Append("<source src='" + videoPath + "' type='video/mp4'>");
+                    viewProductString.Append("Your browser does not support the video tag.");
+                    viewProductString.Append("</video>");
+                }
 
                 viewProductString.Append("<h2>" + product.Name + "</h2>");
                 viewProductString.Append("<p>Description:</p>");

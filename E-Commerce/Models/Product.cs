@@ -19,13 +19,16 @@ namespace E_Commerce.Models
         public DateTime Updated_At { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
 
-        public Product(int User_ID, string Name, decimal Price, string Description, string Image, string Category, string Specifications, DateTime Created_At, DateTime Updated_At)
+        public string VideoPath { get; set; }
+
+        public Product(int User_ID, string Name, decimal Price, string Description, string Image, string VideoPath, string Category, string Specifications, DateTime Created_At, DateTime Updated_At)
         {
             this.User_ID = User_ID;
             this.Name = Name;
             this.Price = Price;
             this.Description = Description;
             this.Image = Image;
+            this.VideoPath = VideoPath;
             this.Category = Category;
             this.Specifications = Specifications;
             this.Created_At = Created_At;
